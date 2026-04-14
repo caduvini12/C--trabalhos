@@ -81,7 +81,10 @@ class Program
 			Console.WriteLine("6- Salvar");
 			Console.WriteLine("0- Sair");
 
-			int.TryParse(Console.ReadLine(), out opcao);
+			while (!int.TryParse(Console.ReadLine(), out opcao))
+			{
+    			Console.WriteLine("Digite uma opção válida:");
+			}	
 
 			switch (opcao)
 			{
@@ -102,15 +105,19 @@ class Program
 
 	static void CadastrarAluno()
 	{
-		Console.Write("Nome: ");
-		string nome = Console.ReadLine();
+     Console.Write("Nome: ");
+     string nome = Console.ReadLine();
 
-		Console.Write("Idade: ");
-		int idade = int.Parse(Console.ReadLine());
+     Console.Write("Idade: ");
+     int idade;
+     while (!int.TryParse(Console.ReadLine(), out idade))
+    {
+        Console.WriteLine("Digite uma idade válida:");
+    }
 
-		alunos[totalAlunos++] = new Aluno(nome, proximaMatricula++, idade);
+     alunos[totalAlunos++] = new Aluno(nome, proximaMatricula++, idade);
 
-		Console.WriteLine("Aluno cadastrado!");
+     Console.WriteLine("Aluno cadastrado!");
 	}
 
 	static void CadastrarDisciplina()
@@ -124,22 +131,38 @@ class Program
 	}
 
 	static void CadastrarMatricula()
-	{
-		Console.Write("Matrícula do aluno: ");
-		int mat = int.Parse(Console.ReadLine());
+	{	
+     Console.Write("Matrícula do aluno: ");
+     int mat;
+     while (!int.TryParse(Console.ReadLine(), out mat))
+    {
+        Console.WriteLine("Digite uma matrícula válida:");
+    }
 
-		Console.Write("Código da disciplina: ");
-		int cod = int.Parse(Console.ReadLine());
+     Console.Write("Código da disciplina: ");
+     int cod;
+     while (!int.TryParse(Console.ReadLine(), out cod))
+    {
+        Console.WriteLine("Digite um código válido:");
+    }
 
-		Console.Write("Nota 1: ");
-		float n1 = float.Parse(Console.ReadLine());
+     Console.Write("Nota 1: ");
+     float n1;
+     while (!float.TryParse(Console.ReadLine(), out n1))
+    {
+        Console.WriteLine("Digite uma nota válida:");
+    }
 
-		Console.Write("Nota 2: ");
-		float n2 = float.Parse(Console.ReadLine());
+     Console.Write("Nota 2: ");
+     float n2;
+     while (!float.TryParse(Console.ReadLine(), out n2))
+    {
+        Console.WriteLine("Digite uma nota válida:");
+    }
 
-		matriculas[totalMatriculas++] = new Matricula(cod, n1, n2, mat);
+     matriculas[totalMatriculas++] = new Matricula(cod, n1, n2, mat);
 
-		Console.WriteLine("Matrícula cadastrada!");
+     Console.WriteLine("Matrícula cadastrada!");
 	}
 
 	// ================= LISTAGEM COMPLETA =================
